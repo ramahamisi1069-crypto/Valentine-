@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Sly ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 22px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: pop 0.7s ease;
+  z-index: 2;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #ff4d6d;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yesBtn { background: #ff4d6d; color: white; }
+#yesBtn:hover { transform: scale(1.05); }
+
+#noBtn { background: #eee; color: #333; position: relative; }
+
+.hidden { display: none; }
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC hosted in same repo -->
+<audio autoplay loop>
+  <source src="Ruger Hypes on Blue.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+  <!-- 📸 IMAGE -->
+  <img src="https://i.imgur.com/rVKpLWJ.jpeg" alt="Sly ❤️">
+
+  <h1>Hey Sly ❤️</h1>
+  <p>
+    Every time I think about you,<br>
+    my world feels warmer and softer.
+  </p>
+
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙃</button>
+  </div>
+</div>
+
+<div class="card hidden" id="yesCard">
+  <h1>You chose YES 🥹❤️</h1>
+  <p>
+    I promise laughter,<br>
+    love,<br>
+    and memories that last.
+  </p>
+  <h1>Happy Valentine’s 💐</h1>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const card = document.getElementById("card");
+const yesCard = document.getElementById("yesCard");
+
+/* No button runs away */
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* Yes button shows the love message */
+yesBtn.addEventListener("click", () => {
+  card.classList.add("hidden");
+  yesCard.classList.remove("hidden");
+});
+
+/* Floating hearts generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 400);
+</script>
+
+</body>
+  </html>
